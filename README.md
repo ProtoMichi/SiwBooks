@@ -51,6 +51,9 @@
 - Lista di autori (relazione many-to-many)
 - Lista di recensioni (relazione one-to-many)
 
+### ImmagineLibro
+- Dati Immagine (un array di byte che consente di memorizzare l'immagine nel database) 
+
 ### Autore
 - Nome
 - Cognome
