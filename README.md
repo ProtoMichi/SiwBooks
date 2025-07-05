@@ -90,3 +90,4 @@
 - **Spring Security** (per autenticazione e autorizzazione)
 - **PostgreSQL** (per il database)
 - **Maven** (per la gestione delle dipendenze)
+- **OAuth2** (per l'autenticazione tramite Google)
