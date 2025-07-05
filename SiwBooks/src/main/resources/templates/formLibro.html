@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Aggiungi Libro</title>
+
+    <!-- Collegamento al file CSS per lo stile del form -->
+    <link rel="stylesheet" th:href="@{/css/formLibro.css}" />
+</head>
+<body>
+
+    <!-- Titolo della pagina -->
+    <h1>Aggiungi un nuovo libro</h1>
+
+    <!-- Form per l'aggiunta di un libro -->
+    <form th:action="@{/libri/aggiungi}" th:object="${libro}" method="POST" enctype="multipart/form-data">
+
+        <!-- Campo: Titolo del libro -->
+        <label for="titolo">Titolo:</label><br>
+        <input type="text" id="titolo" th:field="*{titolo}" required /><br><br>
+
+        <!-- Campo: Anno di pubblicazione -->
+        <label for="anno">Anno di pubblicazione:</label><br>
+        <input type="number" id="anno" th:field="*{anno}" min="0" required /><br><br>
+
+        <!-- Sezione: Inserimento di nuovi autori -->
+        <label>Autori nuovi:</label><br>
+        <div id="autori-container">
+            <div class="autore">
+                <input type="text" name="autori[0].nome" placeholder="Nome" required />
+                <input type="text" name="autori[0].cognome" placeholder="Cognome" required />
+                <input type="date" name="autori[0].dataDiNascita" placeholder="Data di nascita" required />
+                <input type="date" name="autori[0].dataDiMorte" placeholder="Data di morte" />
+                <input type="text" name="autori[0].nazionalita" placeholder="Nazionalità" required />
+                <input type="file" name="autori[0].fotografiaFile" accept="image/*" />
+            </div>
+        </div>
+
+        <!-- Pulsante per aggiungere dinamicamente altri autori (gestito da JavaScript) -->
+        <button type="button" id="aggiungi-autore-btn">+ Aggiungi altro autore</button>
+        <br><br>
+
+        <!-- Sezione: Selezione di autori già esistenti nel sistema -->
+        <label>Seleziona autori esistenti:</label>
+        <div class="autori-esistenti">
+            <div th:each="autore : ${autoriEsistenti}">
+                <label>
+                    <input type="checkbox" name="autoriEsistentiIds" th:value="${autore.id}" />
+                    <span th:text="${autore.nome + ' ' + autore.cognome + ' (' + #temporals.format(autore.dataDiNascita, 'yyyy') + ')'}"></span>
+                </label>
+            </div>
+        </div>
+        <br>
+
+        <!-- Campo: Caricamento immagini associate al libro -->
+        <label for="immagini">Immagini (puoi caricare più file):</label><br>
+        <input type="file" id="immagini" name="immagini" multiple accept="image/*" /><br><br>
+
+        <!-- Pulsante di invio del form -->
+        <button type="submit">Aggiungi</button>
+    </form>
+
+    <!-- Link per tornare alla home -->
+    <br>
+    <a href="/">Torna alla home</a>
+
+    <!-- Script per gestire l'aggiunta dinamica degli autori -->
+    <script src="/js/formLibro.js"></script>
+</body>
+</html>

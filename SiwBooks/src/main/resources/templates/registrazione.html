@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <!-- Titolo della pagina -->
+    <title>Registrazione</title>
+    <!-- Collegamento al file CSS per la pagina di registrazione -->
+    <link rel="stylesheet" th:href="@{/css/registrazione.css}">
+    <!-- Import font da Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="login-box">
+        <!-- Titolo della sezione registrazione -->
+        <h2>Registrati</h2>
+
+        <!-- Messaggio di errore visibile solo se esiste un errore -->
+        <div class="error" th:if="${error}">
+            <p th:text="${error}"></p>
+        </div>
+
+        <!-- Form di registrazione -->
+        <form th:action="@{/registrati}" method="post" th:object="${credentials}">
+            <!-- Campo username -->
+            <label for="username">Username:</label>
+            <input type="text" id="username" th:field="*{username}" required>
+
+            <!-- Campo password -->
+            <label for="password">Password:</label>
+            <input type="password" id="password" th:field="*{password}" required>
+
+            <!-- Campo conferma password (non legato all'oggetto, name esplicito) -->
+            <label for="confirmPassword">Conferma Password:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required>
+
+            <!-- Campo nome utente -->
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" th:field="*{user.nome}" required>
+
+            <!-- Campo cognome utente -->
+            <label for="cognome">Cognome:</label>
+            <input type="text" id="cognome" th:field="*{user.cognome}" required>
+
+            <!-- Campo email -->
+            <label for="email">Email:</label>
+            <input type="email" id="email" th:field="*{user.email}" required>
+
+            <!-- Pulsante per inviare il form -->
+            <button type="submit">Registrati</button>
+        </form>
+
+        <!-- Link per chi ha già un account -->
+        <div class="register-link">
+            Hai già un account? <a th:href="@{/login}">Accedi</a>
+        </div>
+    </div>
+</body>
+</html>

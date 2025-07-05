@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${autore.nome + ' ' + autore.cognome}">Dettagli Autore</title>
+    <link rel="stylesheet" th:href="@{/css/style2.css}">
+</head>
+<body>
+<div class="container">
+
+    <!-- Titolo principale con nome autore -->
+    <h1 th:text="${autore.nome + ' ' + autore.cognome}"></h1>
+
+    <!-- Informazioni utente loggato -->
+    <p>Utente loggato: 
+        <span th:text="${utente != null ? utente.credentials.username : 'nessuno'}"></span>
+    </p>
+    <p>Ruolo utente: 
+        <span th:text="${utente != null ? utente.credentials.ruolo : 'nessuno'}"></span>
+    </p>
+
+    <!-- Dati anagrafici autore -->
+    <p><strong>Data di nascita:</strong> 
+        <span th:text="${autore.dataDiNascita}"></span>
+    </p>
+    <p><strong>Data di morte:</strong>
+        <span th:text="${autore.dataDiMorte != null ? autore.dataDiMorte : 'Ancora vivo'}"></span>
+    </p>
+    <p><strong>Nazionalità:</strong> 
+        <span th:text="${autore.nazionalita}"></span>
+    </p>
+
+    <!-- Foto autore, se presente -->
+    <div th:if="${autore.fotografia != null}" class="autore">
+        <img th:src="@{'/autore/foto/' + ${autore.id}}" alt="Foto autore"/>
+    </div>
+
+    <!-- Libri scritti dall'autore -->
+    <h3>Libri scritti</h3>
+    <div th:if="${autore.libri != null and !autore.libri.isEmpty()}">
+        <div class="libri" th:each="libro : ${autore.libri}">
+            <div class="immagine">
+                <a th:href="@{'/libri/' + ${libro.id}}">
+                    <!-- Se il libro ha immagini, mostra la prima -->
+                    <img th:if="${libro.immagini != null and !libro.immagini.isEmpty()}"
+                         th:src="@{'/immagine/' + ${libro.immagini[0].id}}"
+                         alt="Copertina di [[${libro.titolo}]]" />
+                    <!-- Altrimenti, immagine di default -->
+                    <img th:if="${libro.immagini == null or libro.immagini.isEmpty()}"
+                         src="/images/default-cover.png"
+                         alt="Nessuna immagine disponibile" />
+                </a>
+                <!-- Titolo e anno del libro -->
+                <p style="text-align:center; font-weight:bold;" th:text="${libro.titolo}">Titolo</p>
+                <p style="text-align:center;" th:text="'Anno: ' + ${libro.anno}"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Messaggio se l'autore non ha libri -->
+    <p th:if="${autore.libri == null or autore.libri.isEmpty()}">
+        Questo autore non ha ancora libri associati.
+    </p>
+
+    <!-- Opzioni per admin: modifica ed elimina autore -->
+    <div th:if="${utente != null and utente.credentials.ruolo == 'ADMIN'}">
+        <a th:href="@{'/autori/' + ${autore.id} + '/modifica'}">Modifica autore</a>
+    </div>
+
+    <div th:if="${utente != null and utente.credentials.ruolo == 'ADMIN'}">
+        <form th:action="@{'/autori/' + ${autore.id} + '/elimina'}" method="post" style="display:inline;">
+            <!-- Token CSRF per sicurezza -->
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+            <button type="submit" class="admin-button"
+                    onclick="return confirm('Sei sicuro di voler eliminare questo autore? Questa azione è irreversibile.');">
+                Elimina Autore
+            </button>
+        </form>
+    </div>
+
+    <!-- Link per tornare alla home -->
+    <a href="/" class="back-button">Torna alla home</a>
+</div>
+</body>
+</html>

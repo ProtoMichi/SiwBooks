@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Autori</title>
+    
+    <!-- Collegamento al foglio di stile personalizzato -->
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    
+    <!-- Collegamento al file JS che gestisce la logica della pagina -->
+    <script th:src="@{/js/autori.js}" defer></script>
+    
+    <!-- Font esterno -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header della pagina -->
+    <header>
+        <a href="/" class="logo">sIWBOOKS</a>
+        <nav>
+			<!-- Link visibile SOLO se l'utente NON è autenticato -->
+			            <a th:href="@{/login}" sec:authorize="isAnonymous()">lOgin</a>
+
+			            <!-- Mostra il nome dell'utente se autenticato -->
+			            <span sec:authorize="isAuthenticated()" th:text="${utente.displayName}">utente</span>
+
+			            <!-- Link di logout, visibile solo se autenticato -->
+			            <a href="#" id="logout-link" sec:authorize="isAuthenticated()">Logout</a>
+
+			            <!-- Form invisibile per fare il logout con metodo POST -->
+			            <form id="logout-form" th:action="@{/logout}" method="post" style="display:none;">
+			                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+			            </form>
+            <a th:href="@{/}">Libri</a>
+        </nav>
+    </header>
+
+    <!-- Contenuto principale -->
+    <main>
+        <!-- Sezione titolo -->
+        <div class="title-section">
+            <h2>Scopri gli Autori</h2>
+            <hr>
+            <!-- Debug per controllare l'utente loggato e il suo ruolo -->
+            <!--<p>
+                DEBUG: utente = <span th:text="${utente != null ? utente.displayName : 'nessuno'}"></span>,
+                ruolo = <span th:text="${utente != null ? utente.ruolo : 'nessuno'}"></span>
+            </p>-->
+        </div>
+        
+        <!-- 🔍 Barra di ricerca per cercare autori per cognome -->
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Cerca Autore per cognome...">
+            <button type="button" onclick="cercaAutori()">🔍</button>
+        </div>
+
+        <!-- Wrapper della galleria degli autori con frecce di scorrimento -->
+        <div id="autoriWrapper">
+            <button id="scroll-left" class="scroll-arrow" aria-label="Scorri a sinistra">‹</button>
+
+            <!-- Contenitore autori -->
+            <div class="author-gallery" id="autoriContainer">
+                
+                <!-- Pulsante per aggiungere un nuovo autore, visibile solo all'ADMIN -->
+                <div th:if="${utente != null and utente.ruolo == 'ADMIN'}" class="add-author-container">
+                    <a th:href="@{/autori/aggiungi}" class="add-author-button">+</a>
+                </div>
+
+                <!-- Elenco degli autori -->
+                <div th:each="autore : ${autori}" class="author-card">
+                    <a th:href="@{'/autori/' + ${autore.id}}">
+                        <!-- Immagine dell'autore, con fallback in caso di errore -->
+                        <img th:src="@{'/autore/foto/' + ${autore.id}}"
+                             alt="Foto Autore"
+                             class="author-image"
+                             onerror="this.onerror=null;this.src='/images/AutoreDefault.jpg';" />
+                        
+                        <!-- Nome dell'autore in overlay -->
+                        <div class="author-name-overlay" th:text="${autore.nome + ' ' + autore.cognome}"></div>
+                    </a>
+                </div>
+            </div>
+
+            <button id="scroll-right" class="scroll-arrow" aria-label="Scorri a destra">›</button>
+        </div>
+    </main>
+</body>
+</html>

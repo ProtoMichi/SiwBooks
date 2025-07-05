@@ -1,0 +1,60 @@
+/* Stile di base per il corpo della pagina */
+body {
+    font-family: Arial, sans-serif;       /* Font leggibile e semplice */
+    background-color: #f4f4f4;            /* Colore di sfondo grigio chiaro */
+    margin: 40px;                         /* Spazio attorno alla pagina */
+}
+
+/* Stile per l'intestazione principale */
+h1 {
+    text-align: center;                   /* Centratura orizzontale del testo */
+    color: #333;                          /* Colore scuro per contrasto */
+}
+
+/* Stile generale del form */
+form {
+    max-width: 500px;                     /* Larghezza massima del form */
+    margin: 0 auto;                       /* Centratura automatica orizzontale */
+    background-color: #fff;               /* Sfondo bianco */
+    padding: 25px 30px;                   /* Spaziatura interna */
+    border-radius: 8px;                   /* Angoli arrotondati */
+    box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Leggera ombra per profondità */
+}
+
+/* Spaziatura tra i gruppi di input */
+div {
+    margin-bottom: 15px;                  /* Spazio sotto ogni campo */
+}
+
+/* Stile per le etichette e eventuali <span> descrittivi */
+label, span {
+    display: block;                       /* Ogni elemento su una nuova riga */
+    margin-bottom: 6px;                   /* Spazio tra etichetta e input */
+    color: #333;                          /* Colore del testo coerente */
+}
+
+/* Stile per gli input di testo e numeri */
+input[type="text"],
+input[type="number"] {
+    width: 100%;                          /* Occupa tutta la larghezza disponibile */
+    padding: 8px;                         /* Spazio interno */
+    border: 1px solid #ccc;               /* Bordo grigio chiaro */
+    border-radius: 4px;                   /* Angoli leggermente arrotondati */
+    font-size: 14px;                      /* Dimensione del font */
+}
+
+/* Stile per il pulsante */
+button {
+    background-color: #007bff;            /* Blu principale */
+    color: white;                         /* Testo bianco */
+    padding: 10px 18px;                   /* Spaziatura interna */
+    border: none;                         /* Nessun bordo */
+    border-radius: 4px;                   /* Angoli arrotondati */
+    cursor: pointer;                      /* Cursore a mano al passaggio */
+    font-size: 16px;                      /* Font leggermente più grande */
+}
+
+/* Cambiamento di colore al passaggio del mouse sul bottone */
+button:hover {
+    background-color: #0056b3;            /* Blu più scuro */
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Aggiungi Ingrediente</title>
+
+    <!-- Collegamento al file CSS per lo stile del form delle recensioni -->
+    <link rel="stylesheet" th:href="@{/css/formRecensioni.css}" />
+</head>
+<body>
+
+    <!-- Titolo principale della pagina -->
+    <h1>Aggiungi una Recensione</h1>
+
+    <!-- Form per l'aggiunta della recensione -->
+    <!-- Il form invia una POST alla rotta /libri/{id} (id del libro) -->
+    <form th:action="@{'/libri/' + ${libro.id}}" method="POST" th:object="${recensione}">
+
+        <!-- Campo: Titolo della recensione -->
+        <div>
+            Titolo:
+            <span>
+                <input required type="text" th:field="*{titolo}" />
+            </span>
+        </div>
+
+        <!-- Campo: Voto della recensione (da 1 a 5) -->
+        <div>
+            Voto:
+            <span>
+                <input required type="number" min="1" max="5" th:field="*{voto}" />
+            </span>
+        </div>
+
+        <!-- Campo: Testo della recensione (massimo 255 caratteri) -->
+        <div>
+            Recensione:
+            <span>
+                <input type="text" maxlength="255" th:field="*{testo}" />
+            </span>
+        </div>
+
+        <!-- Pulsante per inviare la recensione -->
+        <div>
+            <span>
+                <button type="submit">Aggiungi</button>
+            </span>
+        </div>
+
+    </form>
+    
+</body>
+</html>

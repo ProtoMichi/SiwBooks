@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Modifica Autore</title>
+
+    <!-- Collegamento al file CSS per la pagina di modifica autore -->
+    <link rel="stylesheet" th:href="@{/css/modificaAutore.css}" />
+</head>
+<body>
+    <!-- Titolo della pagina -->
+    <h1>Modifica autore</h1>
+
+    <!-- Form per la modifica dei dati dell'autore -->
+    <form th:action="@{'/autori/' + ${autore.id} + '/modifica'}"
+          th:object="${autore}"
+          method="POST"
+          enctype="multipart/form-data">
+
+        <!-- Token CSRF per la protezione della form -->
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+
+        <!-- Campo per il nome -->
+        <label for="nome">Nome:</label><br>
+        <input type="text" id="nome" th:field="*{nome}" required /><br><br>
+
+        <!-- Campo per il cognome -->
+        <label for="cognome">Cognome:</label><br>
+        <input type="text" id="cognome" th:field="*{cognome}" required /><br><br>
+
+        <!-- Campo per la data di nascita -->
+        <label for="dataDiNascita">Data di nascita:</label><br>
+        <input type="date" id="dataDiNascita" name="dataDiNascita"
+               th:value="${#temporals.format(autore.dataDiNascita, 'yyyy-MM-dd')}"
+               required /><br><br>
+
+        <!-- Campo per la data di morte, facoltativa -->
+        <label for="dataDiMorte">Data di morte (se applicabile):</label><br>
+        <input type="date" id="dataDiMorte" name="dataDiMorte"
+               th:value="${autore.dataDiMorte != null} ? ${#temporals.format(autore.dataDiMorte, 'yyyy-MM-dd')} : ''" /><br><br>
+
+        <!-- Campo per la nazionalità -->
+        <label for="nazionalita">Nazionalità:</label><br>
+        <input type="text" id="nazionalita" th:field="*{nazionalita}" required /><br><br>
+
+        <!-- Se l'autore ha una fotografia, mostrarla -->
+        <div th:if="${autore.fotografia != null}">
+            <label>Fotografia attuale:</label><br>
+            <img th:src="@{'/autore/foto/' + ${autore.id}}" alt="Foto autore" width="150" /><br><br>
+        </div>
+
+        <!-- Campo per caricare una nuova fotografia -->
+        <label for="fotografiaFile">Carica nuova fotografia (facoltativa):</label><br>
+        <input type="file" id="fotografiaFile" th:field="*{fotografiaFile}" accept="image/*" /><br><br>
+
+        <!-- Pulsante per salvare le modifiche -->
+        <button type="submit">Salva modifiche</button>
+    </form>
+
+    <!-- Link per tornare alla home -->
+    <br>
+    <a href="/" style="text-decoration: none;">Torna alla home</a>
+</body>
+</html>

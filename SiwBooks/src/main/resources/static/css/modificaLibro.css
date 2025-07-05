@@ -1,0 +1,162 @@
+/* Impostazioni generali del corpo della pagina */
+body {
+    font-family: 'Playfair Display', serif;  /* Font elegante */
+    background-color: #f9f9f9;               /* Colore di sfondo chiaro */
+    color: #333;                             /* Colore del testo */
+    margin: 40px;                            /* Margine esterno alla pagina */
+}
+
+/* Stile per il titolo principale */
+h1 {
+    text-align: center;                      /* Centra il titolo */
+    margin-bottom: 30px;                     /* Spazio sotto il titolo */
+    font-weight: 700;                        /* Grassetto */
+    font-size: 2.5rem;                       /* Dimensione del font */
+    color: #222;                             /* Colore leggermente più scuro */
+}
+
+/* Stile del contenitore del form */
+form {
+    max-width: 1000px;                       /* Larghezza massima */
+    margin: 0 auto;                          /* Centra orizzontalmente */
+    background-color: white;                 /* Sfondo bianco */
+    padding: 30px 50px;                      /* Spaziatura interna */
+    border-radius: 8px;                      /* Angoli arrotondati */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);  /* Ombra leggera */
+}
+
+/* Stile per le etichette dei campi */
+label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    margin-top: 20px;
+    font-size: 1.1rem;
+}
+
+/* Stile base per input di testo, numero, data e file */
+input[type="text"],
+input[type="number"],
+input[type="file"],
+input[type="date"] {
+    width: 100%;                             /* Riempie tutto lo spazio disponibile */
+    padding: 10px 12px;
+    border: 1.8px solid #ccc;                /* Bordo grigio chiaro */
+    border-radius: 5px;                      /* Angoli arrotondati */
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;      /* Transizione bordo al focus */
+}
+
+/* Effetto visivo al focus degli input */
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="file"]:focus,
+input[type="date"]:focus {
+    outline: none;
+    border-color: #007bff;                   /* Bordo blu al focus */
+    box-shadow: 0 0 5px rgba(0,123,255,0.4);  /* Effetto luce azzurra */
+}
+
+/* Stile del pulsante principale */
+button {
+    margin-top: 30px;
+    width: 100%;
+    background-color: #007bff;               /* Blu acceso */
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 12px 0;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.25s ease;
+}
+
+/* Effetto hover sul pulsante */
+button:hover {
+    background-color: #0056b3;               /* Blu più scuro */
+}
+
+/* Stile per i link */
+a {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* Effetto hover sui link */
+a:hover {
+    text-decoration: underline;
+}
+
+/* Contenitore flessibile per ogni autore */
+.autore {
+    display: flex;
+    flex-wrap: wrap;                         /* Permette di andare a capo */
+    gap: 12px;                               /* Spazio tra gli elementi */
+    margin-top: 10px;
+}
+
+/* Stile base per input all'interno della sezione autore */
+.autore input {
+    flex: 1;                                 /* Ogni input prende lo stesso spazio */
+    min-width: 120px;                        /* Larghezza minima */
+}
+
+/* Imposta larghezza fissa per la data per evitare troncamenti */
+.autore input[type="date"] {
+    flex: none;
+    width: 180px;
+}
+
+/* Pulsante per rimuovere un autore */
+.rimuovi-autore-btn {
+    background-color: #dc3545;               /* Rosso */
+    border: none;
+    color: white;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    padding: 0 12px;
+    transition: background-color 0.25s ease;
+}
+
+/* Hover per il pulsante di rimozione */
+.rimuovi-autore-btn:hover {
+    background-color: #a71d2a;               /* Rosso più scuro */
+}
+
+/* Larghezza fissa per file input nella sezione autore */
+.autore input[type="file"] {
+    flex: none;
+    width: 220px;
+}
+
+/* Contenitore degli autori già presenti */
+.autori-esistenti {
+    background-color: #f0f4ff;               /* Azzurro chiaro */
+    padding: 15px 20px;
+    border-radius: 6px;
+    border: 1px solid #ccddee;
+    margin-bottom: 20px;
+    max-height: 300px;                       /* Altezza massima scrollabile */
+    overflow-y: auto;                        /* Scroll verticale se necessario */
+}
+
+/* Etichette per autori esistenti */
+.autori-esistenti label {
+    display: block;
+    margin: 8px 0;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+/* Checkbox visivamente più grande */
+.autori-esistenti input[type="checkbox"] {
+    margin-right: 8px;
+    transform: scale(1.2);
+}

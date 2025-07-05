@@ -1,0 +1,184 @@
+
+/* Stile generale per il corpo della pagina */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Font moderno e leggibile su tutti i dispositivi */
+  background-color: #f8f9fa; /* Colore di sfondo molto chiaro, quasi bianco */
+  color: #333; /* Testo grigio scuro per miglior leggibilità */
+  margin: 20px; /* Spazio esterno intorno alla pagina */
+  line-height: 1.6; /* Spaziatura tra le righe più ampia per migliorare la leggibilità */
+}
+
+/* Contenitore principale che racchiude tutto il contenuto */
+.container {
+  max-width: 900px; /* Impedisce che il contenuto si estenda troppo in larghezza */
+  margin: 0 auto; /* Centra orizzontalmente il contenitore */
+  background-color: #fff; /* Sfondo bianco per il contenuto principale */
+  padding: 30px 40px; /* Spaziatura interna su tutti i lati */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Ombra leggera per un effetto "sollevato" */
+  border-radius: 12px; /* Angoli arrotondati per un look moderno */
+}
+
+/* Titolo principale della pagina */
+h1 {
+  font-size: 2.8rem; /* Grandezza importante per dare risalto */
+  color: #2c3e50; /* Blu-grigio elegante */
+  margin-bottom: 20px; /* Spazio sotto al titolo */
+  font-weight: 700; /* Più spesso */
+}
+
+/* Sottotitoli o titoli di sezione */
+h3 {
+  color: #34495e; /* Colore grigio-blu leggermente più chiaro */
+  margin-top: 40px; /* Spazio sopra il titolo */
+  margin-bottom: 15px; /* Spazio sotto */
+  border-bottom: 3px solid #2980b9; /* Linea blu decorativa sotto il titolo */
+  padding-bottom: 8px; /* Distanza tra testo e linea */
+  font-weight: 600; /* Spessore intermedio */
+}
+
+/* Lista senza puntini */
+ul {
+  list-style-type: none; /* Rimuove i punti elenco */
+  padding-left: 0; /* Rimuove il padding sinistro predefinito */
+}
+
+/* Elementi della lista */
+li {
+  margin-bottom: 25px; /* Spazio tra un autore/recensione e l’altro */
+  padding-bottom: 15px; /* Padding interno sotto il contenuto */
+  border-bottom: 1px solid #ddd; /* Linea divisoria leggera */
+  transition: background-color 0.3s ease; /* Transizione per eventuale hover */
+  cursor: default; /* Nessun effetto cliccabile */
+}
+
+/* Paragrafi dentro ogni elemento lista */
+li p {
+  margin: 6px 0; /* Spazio verticale ridotto tra paragrafi */
+  font-size: 1rem; /* Dimensione leggibile */
+  color: #555; /* Grigio più chiaro del testo principale */
+}
+
+/* Immagini generiche (es: autore, libro) */
+img {
+  border-radius: 8px; /* Angoli arrotondati */
+  max-width: 150px;
+  max-height: 150px;
+  display: block; /* Evita che l'immagine si comporti come inline */
+  margin-top: 10px; /* Spazio sopra */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* Ombra leggera */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transizione per hover */
+}
+
+/* Effetto al passaggio del mouse */
+img:hover {
+  transform: scale(1.05); /* Ingrandisce leggermente */
+  box-shadow: 0 10px 24px rgba(0,0,0,0.15); /* Ombra più marcata */
+}
+
+/* Contenitore per ogni immagine */
+div.immagine {
+  display: inline-block; /* Permette di affiancare le immagini */
+  margin: 10px 15px 10px 0; /* Spaziatura tra immagini */
+}
+
+/* Stile specifico per immagini dentro .immagine */
+div.immagine img {
+  max-width: 250px;
+  max-height: 250px;
+  vertical-align: middle; /* Allineamento verticale */
+  border-radius: 12px; /* Angoli più arrotondati rispetto a img generico */
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12); /* Ombra più evidente */
+  cursor: pointer; /* Cursore a mano */
+}
+
+/* Hover su queste immagini */
+div.immagine img:hover {
+  transform: scale(1.07); /* Zoom più accentuato */
+  box-shadow: 0 12px 28px rgba(0,0,0,0.22); /* Ombra più forte */
+}
+
+/* Immagine dell’autore in stile circolare */
+.autore img {
+  max-width: 150px;
+  max-height: 150px;
+  border-radius: 50%; /* Rende l'immagine perfettamente rotonda */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1); /* Ombra delicata */
+  margin-bottom: 12px; /* Spazio sotto l'immagine */
+}
+
+/* Blocco recensione */
+.recensione {
+  background-color: #f0f4ff; /* Sfondo azzurro molto chiaro */
+  padding: 20px 25px; /* Spaziatura interna */
+  border-radius: 12px; /* Angoli arrotondati */
+  box-shadow: 0 4px 18px rgba(0,0,255,0.08); /* Ombra con tonalità blu */
+  margin-bottom: 25px; /* Spazio tra recensioni */
+  cursor: pointer; /* Indica interattività */
+  transition: background-color 0.25s ease, box-shadow 0.3s ease; /* Animazioni fluide */
+}
+
+/* Titolo o autore all’interno della recensione */
+.recensione strong {
+  display: block; /* Va a capo da solo */
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #1a237e; /* Blu intenso */
+}
+
+/* Paragrafi nella recensione */
+.recensione p {
+  margin: 6px 0;
+  color: #333;
+}
+
+/* Hover sulla recensione */
+.recensione:hover {
+  background-color: #d9e2ff; /* Sfondo azzurro più saturo */
+  box-shadow: 0 8px 30px rgba(0,0,255,0.15); /* Ombra più marcata */
+}
+
+/* Nasconde i paragrafi tranne il primo quando collassata */
+.recensione.collapsed p:not(:first-child) {
+  display: none; /* Nasconde tutti tranne il primo paragrafo */
+}
+
+/* Stile dei link principali */
+a {
+  display: inline-block;
+  margin-top: 40px;
+  padding: 12px 25px;
+  background-color: #2980b9; /* Blu acceso */
+  color: white;
+  text-decoration: none; /* Rimuove sottolineatura */
+  font-weight: 600;
+  border-radius: 8px; /* Angoli arrotondati */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Effetto hover */
+  box-shadow: 0 4px 15px rgba(41, 128, 185, 0.5); /* Ombra blu */
+}
+
+/* Effetto hover del link */
+a:hover {
+  background-color: #1c5980; /* Blu più scuro */
+  box-shadow: 0 6px 22px rgba(28, 89, 128, 0.7);
+}
+
+/* Bottone usato per azioni amministrative importanti */
+button.admin-button {
+  display: inline-block;
+  margin-top: 40px;
+  padding: 12px 25px;
+  background-color: #c0392b; /* Rosso intenso (azione distruttiva) */
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 15px rgba(192, 57, 43, 0.5); /* Ombra rossa */
+}
+
+/* Hover sul bottone admin */
+button.admin-button:hover {
+  background-color: #922b21; /* Rosso più scuro */
+  box-shadow: 0 6px 22px rgba(146, 43, 33, 0.7);
+}

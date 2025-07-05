@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${libro.titolo}">Libro</title>
+    <link rel="stylesheet" th:href="@{/css/style2.css}">
+</head>
+<body>
+
+    <!-- Titolo del libro -->
+    <h1 th:text="${libro.titolo}"></h1>
+
+    <!-- Debug: Informazioni sull'utente -->
+    <p th:if="${utente != null}">
+        Utente presente: <span th:text="${utente.displayName}"></span>
+    </p>
+    <p th:if="${utente != null}">
+        Ruolo: <span th:text="${utente.ruolo}"></span>
+    </p>
+    <p th:if="${utente == null}">Utente NON presente</p>
+
+    <!-- Messaggio errore se l'utente ha già recensito il libro -->
+    <div th:if="${errore == 'gia_recensito'}" style="color: red; font-weight: bold; margin-bottom: 20px;">
+        Hai già inserito una recensione per questo libro.
+    </div>
+
+    <!-- Sezione Autori -->
+    <h3>Autori:</h3>
+    <ul>
+        <li th:each="autore : ${libro.autori}">
+            <p><strong>Nome:</strong> <span th:text="${autore.nome}"></span></p>
+            <p><strong>Cognome:</strong> <span th:text="${autore.cognome}"></span></p>
+            <p><strong>Data di nascita:</strong> <span th:text="${autore.dataDiNascita}"></span></p>
+            <p><strong>Data di morte:</strong> 
+                <span th:text="${autore.dataDiMorte != null ? autore.dataDiMorte : 'Ancora vivo'}"></span>
+            </p>
+            <p><strong>Nazionalità:</strong> <span th:text="${autore.nazionalita}"></span></p>
+
+            <!-- Mostra la foto dell'autore se presente -->
+            <img th:if="${autore.fotografia != null}"
+                 th:src="@{'/autore/foto/' + ${autore.id}}"
+                 alt="Foto autore"
+                 style="max-width:150px; max-height:150px;" />
+
+            <!-- Altrimenti mostra immagine di default -->
+            <img th:unless="${autore.fotografia != null}"
+                 th:src="@{/images/AutoreDefault.jpg}"
+                 alt="Foto autore di default"
+                 style="max-width:150px; max-height:150px;" />
+
+            <hr>
+        </li>
+    </ul>
+
+    <!-- Anno di pubblicazione -->
+    <h3>Anno di pubblicazione:</h3>
+    <p th:text="${libro.anno}"></p>
+
+    <!-- Immagini del libro -->
+    <h3>Immagini:</h3>
+    <div class="immagine" th:each="immagine : ${libro.immagini}">
+        <img th:src="@{'/immagine/' + ${immagine.id}}" alt="Immagine del libro" />
+    </div>
+
+    <!-- Recensioni -->
+    <h3>Recensioni:</h3>
+
+    <!-- FORM per eliminazione multipla (solo per ADMIN) -->
+    <form th:if="${utente != null and utente.ruolo == 'ADMIN'}"
+          th:action="@{/libri/{id}/eliminaRecensioni(id=${libro.id})}"
+          method="post"
+          onsubmit="return confirm('Sei sicuro di voler eliminare le recensioni selezionate?');">
+
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+
+        <ul>
+            <li th:each="recensione : ${libro.recensioni}">
+                <div style="margin-bottom: 15px;">
+                    <!-- Checkbox visibile solo all'admin -->
+                    <input type="checkbox" name="recensioniDaEliminare" th:value="${recensione.id}" />
+                    
+                    <!-- Dettagli recensione -->
+                    <strong th:text="${recensione.titolo}"></strong>
+                    <p th:text="${recensione.testo}"></p>
+                    <p><em>Voto: </em><span th:text="${recensione.voto}"></span></p>
+                    <p><em>Autore recensione: </em>
+                        <span th:text="${recensione.utente.credentials.username}"></span>
+                    </p>
+
+                    <!-- Link modifica disponibile solo all'autore -->
+                    <div th:if="${utente != null and utente.displayName == recensione.utente.credentials.username}">
+                        <a th:href="@{'/libri/' + ${libro.id} + '/modificaRecensione/' + ${recensione.id}}">
+                            Modifica recensione
+                        </a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+        <!-- Bottone per eliminazione multipla -->
+        <button type="submit" class="admin-button">Elimina recensioni selezionate</button>
+    </form>
+
+    <!-- VERSIONE NON ADMIN delle recensioni -->
+    <ul th:if="${utente == null or utente.ruolo != 'ADMIN'}">
+        <li th:each="recensione : ${libro.recensioni}">
+            <strong th:text="${recensione.titolo}"></strong>
+            <p th:text="${recensione.testo}"></p>
+            <p><em>Voto: </em><span th:text="${recensione.voto}"></span></p>
+            <p><em>Autore recensione: </em><span th:text="${recensione.utente.credentials.username}"></span></p>
+
+            <!-- Link modifica solo per autore -->
+            <div th:if="${utente != null and utente.displayName == recensione.utente.credentials.username}">
+                <a th:href="@{'/libri/' + ${libro.id} + '/modificaRecensione/' + ${recensione.id}}">
+                    Modifica recensione
+                </a>
+            </div>
+        </li>
+    </ul>
+
+    <!-- Link aggiunta recensione per utenti USER -->
+    <div th:if="${utente != null and utente.ruolo == 'USER'}">
+        <a th:href="@{'/libri/' + ${libro.id} + '/aggiungiRecensione'}">Aggiungi Recensione</a>
+    </div>
+
+    <!-- Link modifica libro per ADMIN -->
+    <div th:if="${utente != null and utente.ruolo == 'ADMIN'}">
+        <a th:href="@{'/libri/' + ${libro.id} + '/modifica'}">Modifica libro</a>
+    </div>
+
+    <!-- FORM eliminazione libro (solo ADMIN) -->
+    <div th:if="${utente != null and utente.ruolo == 'ADMIN'}">
+        <form th:action="@{'/libri/' + ${libro.id} + '/elimina'}" method="POST" style="display:inline;">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+            <button type="submit" class="admin-button" onclick="return confirm('Sei sicuro di voler eliminare questo libro?');">
+                Elimina libro
+            </button>
+        </form>
+    </div>
+
+    <!-- Link per tornare alla home -->
+    <a href="/">Torna alla home</a>
+
+</body>
+</html>

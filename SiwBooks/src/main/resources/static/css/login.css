@@ -1,0 +1,100 @@
+/* Stile generale del corpo della pagina */
+body {
+    font-family: 'Playfair Display', serif;  /* Font elegante serif */
+    background-color: #f4f4f4;               /* Sfondo grigio chiaro */
+    display: flex;                           /* Centra il contenuto */
+    justify-content: center;                 /* Allinea orizzontalmente */
+    align-items: center;                     /* Allinea verticalmente */
+    height: 100vh;                           /* Occupa tutta l'altezza della finestra */
+}
+
+/* Contenitore del form di login */
+.login-box {
+    background: white;                       /* Sfondo bianco */
+    padding: 2em;                            /* Spaziatura interna */
+    border-radius: 8px;                      /* Angoli arrotondati */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);  /* Ombra per profondità */
+    width: 350px;                            /* Larghezza fissa */
+}
+
+/* Titolo del form */
+h2 {
+    text-align: center;                      /* Centratura testo */
+    margin-bottom: 1em;                      /* Spazio sotto */
+}
+
+/* Etichette dei campi input */
+label {
+    display: block;                          /* Etichetta su nuova riga */
+    margin-top: 1em;                         /* Spazio sopra */
+}
+
+/* Campi di input per username e password */
+input[type="text"], input[type="password"] {
+    width: 100%;                             /* Larghezza completa */
+    padding: 0.5em;                          /* Spaziatura interna */
+    margin-top: 0.3em;                       /* Spazio sopra il campo */
+    border: 1px solid #ccc;                  /* Bordo grigio */
+    border-radius: 4px;                      /* Angoli arrotondati */
+}
+
+/* Pulsante principale di login */
+button {
+    margin-top: 1.5em;                       /* Spazio sopra */
+    width: 100%;                             /* Larghezza completa */
+    padding: 0.7em;                          /* Spaziatura interna */
+    background-color: #333;                  /* Sfondo grigio scuro */
+    color: white;                            /* Testo bianco */
+    border: none;                            /* Nessun bordo */
+    border-radius: 4px;                      /* Angoli arrotondati */
+    cursor: pointer;                         /* Cursore a mano */
+}
+
+/* Messaggio di errore */
+.error {
+    color: red;                              /* Testo rosso */
+    font-size: 0.9em;                        /* Testo leggermente più piccolo */
+    text-align: center;                      /* Testo centrato */
+    margin-bottom: 1em;                      /* Spazio sotto */
+}
+
+/* Link alla registrazione */
+.register-link {
+    text-align: center;                      /* Centrato */
+    margin-top: 1em;                         /* Spazio sopra */
+}
+
+.register-link a {
+    color: #0077cc;                          /* Blu vivo */
+    text-decoration: none;                   /* Nessuna sottolineatura */
+}
+
+/* Sezione per login con OAuth (es. Google) */
+.oauth-login {
+    text-align: center;                      /* Testo centrato */
+    margin-top: 2em;                         /* Spazio sopra */
+}
+
+.oauth-login p {
+    margin-bottom: 0.5em;                    /* Spazio sotto il paragrafo */
+    font-size: 0.95em;                       /* Leggermente più piccolo del normale */
+    color: #555;                             /* Grigio medio */
+}
+
+/* Pulsante per login con Google */
+.oauth-login button {
+    background-color: #db4437;               /* Colore rosso tipico di Google */
+    color: white;                            /* Testo bianco */
+    border: none;                            /* Nessun bordo */
+    padding: 0.7em;                          /* Spaziatura interna */
+    width: 100%;                             /* Larghezza completa */
+    border-radius: 4px;                      /* Angoli arrotondati */
+    font-weight: bold;                       /* Testo in grassetto */
+    cursor: pointer;                         /* Cursore a mano */
+    transition: background-color 0.3s;       /* Animazione cambio colore */
+}
+
+/* Effetto hover per pulsante Google */
+.oauth-login button:hover {
+    background-color: #c33c2f;               /* Rosso più scuro al passaggio */
+}

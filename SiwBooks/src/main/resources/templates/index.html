@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+
+    <!-- Collegamento al file CSS -->
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+
+    <!-- Collegamento al file JavaScript -->
+    <script th:src="@{/js/home.js}" defer></script>
+
+    <!-- Font da Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- HEADER con navigazione -->
+    <header>
+        <!-- Logo -->
+        <a href="/" class="logo">sIWBOOKS</a>
+
+        <nav>
+            <!-- Link visibile SOLO se l'utente NON è autenticato -->
+            <a th:href="@{/login}" sec:authorize="isAnonymous()">lOgin</a>
+
+            <!-- Mostra il nome dell'utente se autenticato -->
+            <span sec:authorize="isAuthenticated()" th:text="${utente.displayName}">utente</span>
+
+            <!-- Link di logout, visibile solo se autenticato -->
+            <a href="#" id="logout-link" sec:authorize="isAuthenticated()">Logout</a>
+
+            <!-- Form invisibile per fare il logout con metodo POST -->
+            <form id="logout-form" th:action="@{/logout}" method="post" style="display:none;">
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+            </form>
+
+            <!-- Link a sezione autori -->
+            <a th:href="@{/autori}">aUtori</a>
+        </nav>
+    </header>
+
+    <!-- CONTENUTO PRINCIPALE -->
+    <main>
+
+        <!-- Sezione Titolo e Info Utente -->
+        <div class="title-section">
+            <h2 id="titolo-libro">Benvenuto nella Biblioteca</h2>
+            <hr>
+            <!--<p>Utente loggato: 
+                <span th:text="${utente != null ? utente.displayName : 'nessuno'}"></span>
+            </p>
+            <p>Ruolo utente: 
+                <span th:text="${utente != null ? utente.ruolo : 'nessuno'}"></span>
+            </p>-->
+        </div>
+
+        <!-- BARRA DI RICERCA -->
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Cerca libro per titolo...">
+            <button onclick="cercaLibri()">🔍</button>
+        </div>
+
+        <!-- WRAPPER dei LIBRI (scrollabile) -->
+        <div id="libriWrapper">
+            <!-- Freccia per scroll a sinistra -->
+            <button id="scroll-left" class="scroll-arrow" aria-label="Scorri a sinistra">‹</button>
+
+            <!-- Contenitore dei libri -->
+            <div id="libriContainer" class="gallery">
+                
+                <!-- Pulsante per aggiungere un nuovo libro, visibile solo agli ADMIN -->
+                <div th:if="${utente != null and utente.ruolo == 'ADMIN'}" class="book-card add-book-container">
+                    <a th:href="@{/libri/aggiungi}" class="add-book-button">+</a>
+                </div>
+
+                <!-- Ciclo sui libri da mostrare -->
+                <div class="book-card" th:each="libro : ${libri}">
+                    <a th:href="@{'/libri/' + ${libro.id}}" class="book-link">
+                        <!-- Immagine del libro (con fallback a immagine default se assente) -->
+                        <img th:src="@{'/libri/' + ${libro.id} + '/immagine-principale'}"
+                             th:alt="${libro.titolo}"
+                             class="book-image"
+                             onerror="this.onerror=null; this.src='/images/LibroDefault.jpg';" />
+                             
+                        <!-- Titolo del libro come overlay -->
+                        <div class="book-title-overlay" th:text="${libro.titolo}"></div>
+                    </a>
+                </div>
+
+            </div> <!-- fine libriContainer -->
+
+            <!-- Freccia per scroll a destra -->
+            <button id="scroll-right" class="scroll-arrow" aria-label="Scorri a destra">›</button>
+        </div> <!-- fine libriWrapper -->
+
+    </main>
+
+</body>
+</html>

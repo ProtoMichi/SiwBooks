@@ -1,0 +1,81 @@
+/* Imposta stile base per il corpo della pagina */
+body {
+    font-family: 'Playfair Display', serif; /* Font elegante serif */
+    background-color: #f4f4f4;              /* Colore di sfondo grigio chiaro */
+    display: flex;                          /* Usa Flexbox per centrare il contenuto */
+    justify-content: center;                /* Centra orizzontalmente */
+    align-items: center;                    /* Centra verticalmente */
+    height: 100vh;                          /* Altezza pari alla finestra visibile */
+}
+
+/* Contenitore del box di login */
+.login-box {
+    background: white;                                     /* Sfondo bianco */
+    padding: 2em;                                          /* Spaziatura interna */
+    border-radius: 8px;                                    /* Angoli arrotondati */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);           /* Ombra leggera */
+    width: 350px;                                          /* Larghezza fissa */
+}
+
+/* Titolo del form di login */
+h2 {
+    text-align: center;      /* Testo centrato */
+    margin-bottom: 1em;      /* Spazio sotto il titolo */
+}
+
+/* Stile per le etichette dei campi */
+label {
+    display: block;          /* Mostra l'etichetta su una nuova riga */
+    margin-top: 1em;         /* Spazio sopra ogni etichetta */
+}
+
+/* Stile per input di testo e password */
+input[type="text"], input[type="password"] {
+    width: 100%;             /* Larghezza completa */
+    padding: 0.5em;          /* Spaziatura interna */
+    margin-top: 0.3em;       /* Spazio sopra l'input rispetto all'etichetta */
+    border: 1px solid #ccc;  /* Bordo grigio chiaro */
+    border-radius: 4px;      /* Angoli arrotondati */
+}
+
+/* Stile per il pulsante di login */
+button {
+    margin-top: 1.5em;       /* Spazio sopra il pulsante */
+    width: 100%;             /* Occupa tutta la larghezza del form */
+    padding: 0.7em;          /* Spaziatura interna */
+    background-color: #333;  /* Colore di sfondo scuro */
+    color: white;            /* Testo bianco */
+    border: none;            /* Nessun bordo */
+    border-radius: 4px;      /* Angoli arrotondati */
+    cursor: pointer;         /* Cursore a mano al passaggio */
+}
+
+/* Colore al passaggio del mouse sul pulsante */
+button:hover {
+    background-color: #555;  /* Grigio leggermente più chiaro */
+}
+
+/* Messaggio di errore */
+.error {
+    color: red;              /* Testo rosso */
+    font-size: 0.9em;        /* Testo leggermente più piccolo */
+    text-align: center;      /* Centra il messaggio */
+    margin-bottom: 1em;      /* Spazio sotto l'errore */
+}
+
+/* Contenitore del link di registrazione */
+.register-link {
+    text-align: center;      /* Centra il link */
+    margin-top: 1em;         /* Spazio sopra */
+}
+
+/* Stile per il link di registrazione */
+.register-link a {
+    color: #0077cc;          /* Colore blu acceso */
+    text-decoration: none;   /* Nessuna sottolineatura iniziale */
+}
+
+/* Sottolinea il link al passaggio del mouse */
+.register-link a:hover {
+    text-decoration: underline;
+}

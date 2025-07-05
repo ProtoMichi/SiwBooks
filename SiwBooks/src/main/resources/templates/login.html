@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    
+    <!-- Collegamento al file CSS personalizzato -->
+    <link rel="stylesheet" th:href="@{/css/login.css}">
+    
+    <!-- Font per lo stile del testo -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="login-box">
+        <!-- Titolo della sezione di login -->
+        <h2>Login</h2>
+
+        <!-- Messaggio di errore se il login fallisce -->
+        <div class="error" th:if="${param.error}">
+            Credenziali non valide. Riprova.
+        </div>
+
+        <!-- Form di login -->
+        <form th:action="@{/login}" method="post">
+            <!-- Campo username -->
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <!-- Campo password -->
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <!-- Pulsante di login -->
+            <button type="submit">Accedi</button>
+        </form>
+
+        <!-- Link per la registrazione -->
+        <div class="register-link">
+            Non hai un account? 
+            <a th:href="@{/registrati}">Registrati</a>
+        </div>
+
+        <!-- Sezione per login tramite Google OAuth -->
+        <div class="oauth-login">
+            <p>Oppure accedi con:</p>
+            <a th:href="@{/oauth2/authorization/google}">
+                <button type="button">
+                    <img src="https://developers.google.com/identity/images/g-logo.png" 
+                         alt="Google logo" 
+                         style="height:20px; vertical-align: middle; margin-right: 8px;">
+                    Login con Google
+                </button>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <!-- Titolo dinamico con il titolo del libro -->
+    <title>Modifica Recensione - [[${libro.titolo}]]</title>
+    <!-- Collegamento al CSS specifico per la pagina di modifica recensione -->
+    <link rel="stylesheet" th:href="@{/css/modificaRecensione.css}">
+</head>
+<body>
+
+    <!-- Intestazione con il titolo del libro per cui si modifica la recensione -->
+    <h1>Modifica recensione per: <span th:text="${libro.titolo}"></span></h1>
+
+    <!-- Form per la modifica della recensione -->
+    <form th:action="@{'/libri/' + ${libro.id} + '/modificaRecensione/' + ${recensione.id}}" method="post">
+
+        <!-- Campo titolo recensione -->
+        <label for="titolo">Titolo recensione:</label><br>
+        <input type="text" id="titolo" name="titolo" th:value="${recensione.titolo}" required /><br><br>
+
+        <!-- Campo testo recensione -->
+        <label for="testo">Testo recensione:</label><br>
+        <textarea id="testo" name="testo" rows="5" cols="50" required
+                  th:text="${recensione.testo}"></textarea><br><br>
+
+        <!-- Campo voto recensione, range 1-5 -->
+        <label for="voto">Voto (1-5):</label><br>
+        <input type="number" id="voto" name="voto" min="1" max="5" th:value="${recensione.voto}" required /><br><br>
+
+        <!-- Token CSRF per sicurezza -->
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+
+        <!-- Pulsante per salvare la modifica -->
+        <button type="submit">Salva modifica</button>
+
+        <!-- Link per annullare e tornare alla pagina del libro -->
+        <a th:href="@{'/libri/' + ${libro.id}}">Annulla</a>
+    </form>
+
+</body>
+</html>

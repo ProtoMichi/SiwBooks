@@ -1,0 +1,102 @@
+/* Stile di base per il corpo della pagina */
+body {
+    font-family: 'Playfair Display', serif;     /* Font serif elegante */
+    background-color: #f9f9f9;                  /* Sfondo grigio chiarissimo */
+    color: #333;                                /* Colore del testo principale */
+    margin: 40px;                               /* Margine intorno al contenuto */
+}
+
+/* Titolo principale */
+h1 {
+    text-align: center;                         /* Testo centrato */
+    margin-bottom: 30px;                        /* Spazio sotto il titolo */
+    font-weight: 700;                           /* Grassetto */
+    font-size: 2.5rem;                          /* Dimensione grande */
+    color: #222;                                /* Colore più scuro del testo */
+}
+
+/* Contenitore del form */
+form {
+    max-width: 700px;                           /* Larghezza massima */
+    margin: 0 auto;                             /* Centrato orizzontalmente */
+    background-color: white;                    /* Sfondo bianco */
+    padding: 30px 50px;                         /* Spaziatura interna */
+    border-radius: 8px;                         /* Angoli arrotondati */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);     /* Ombra leggera */
+}
+
+/* Etichette dei campi input */
+label {
+    display: block;                             /* Blocca su una nuova riga */
+    font-weight: 600;                           /* Semi-grassetto */
+    margin-bottom: 8px;                         /* Spazio sotto l'etichetta */
+    margin-top: 20px;                           /* Spazio sopra l'etichetta */
+    font-size: 1.1rem;                          /* Dimensione leggermente grande */
+}
+
+/* Campi di input generici: testo, data e file */
+input[type="text"],
+input[type="date"],
+input[type="file"] {
+    width: 100%;                                /* Occupa tutta la larghezza */
+    padding: 10px 12px;                         /* Spaziatura interna */
+    border: 1.8px solid #ccc;                   /* Bordo grigio chiaro */
+    border-radius: 5px;                         /* Angoli leggermente arrotondati */
+    font-size: 1rem;                            /* Dimensione testo normale */
+    box-sizing: border-box;                     /* Include padding nel calcolo larghezza */
+    transition: border-color 0.3s ease;         /* Transizione fluida per il bordo */
+}
+
+/* Stile dei campi input quando sono attivi (focus) */
+input[type="text"]:focus,
+input[type="date"]:focus,
+input[type="file"]:focus {
+    outline: none;                              /* Rimuove contorno di default */
+    border-color: #007bff;                      /* Colore del bordo blu */
+    box-shadow: 0 0 5px rgba(0,123,255,0.4);     /* Effetto glow azzurro */
+}
+
+/* Pulsante principale del form */
+button {
+    margin-top: 30px;                           /* Spazio sopra */
+    width: 100%;                                /* Occupa tutta la larghezza */
+    background-color: #007bff;                  /* Colore blu */
+    border: none;                               /* Nessun bordo */
+    color: white;                               /* Testo bianco */
+    font-size: 1.2rem;                          /* Dimensione testo più grande */
+    font-weight: 600;                           /* Semi-grassetto */
+    padding: 12px 0;                            /* Spaziatura verticale */
+    border-radius: 6px;                         /* Angoli arrotondati */
+    cursor: pointer;                            /* Cursore a mano */
+    transition: background-color 0.25s ease;    /* Transizione fluida del colore */
+}
+
+/* Effetto hover sul pulsante */
+button:hover {
+    background-color: #0056b3;                  /* Blu più scuro al passaggio */
+}
+
+/* Link testuali (es. "Torna indietro" o "Vai alla home") */
+a {
+    display: block;                             /* Su nuova riga */
+    text-align: center;                         /* Testo centrato */
+    margin-top: 20px;                           /* Spazio sopra */
+    color: #007bff;                             /* Blu vivace */
+    text-decoration: none;                      /* Nessuna sottolineatura */
+    font-weight: 600;                           /* Semi-grassetto */
+}
+
+/* Hover sui link */
+a:hover {
+    text-decoration: underline;                 /* Sottolineatura al passaggio */
+}
+
+/* Immagini caricate (anteprima o avatar) */
+img {
+    display: block;                             /* Su nuova riga */
+    margin-top: 10px;                           /* Spazio sopra */
+    max-width: 150px;                           /* Larghezza massima */
+    height: auto;                               /* Altezza proporzionale */
+    border-radius: 4px;                         /* Angoli arrotondati */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);      /* Leggera ombra */
+}

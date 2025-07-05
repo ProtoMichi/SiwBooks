@@ -1,0 +1,122 @@
+/* Impostazioni globali della pagina */
+body {
+    font-family: 'Playfair Display', serif; /* Font elegante per i testi */
+    background-color: #f9f9f9;              /* Sfondo chiaro */
+    color: #333;                            /* Colore del testo */
+    margin: 40px;                           /* Spazio attorno al body */
+}
+
+/* Stile dell’intestazione principale */
+h1 {
+    text-align: center;                     /* Centratura del titolo */
+    margin-bottom: 30px;                    /* Spazio sotto il titolo */
+    font-weight: 700;                       /* Grassetto */
+    font-size: 2.5rem;                      /* Dimensione del font */
+    color: #222;                            /* Colore più scuro per il titolo */
+}
+
+/* Stile generale del form */
+form {
+    max-width: 900px;                       /* Larghezza massima del form */
+    margin: 0 auto;                         /* Centratura orizzontale */
+    background-color: white;               /* Sfondo bianco */
+    padding: 30px 50px;                     /* Spaziatura interna */
+    border-radius: 8px;                     /* Angoli arrotondati */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* Leggera ombreggiatura */
+}
+
+/* Etichette dei campi del form */
+label {
+    display: block;                         /* Ogni etichetta su una riga propria */
+    font-weight: 600;                       /* Grassetto medio */
+    margin-bottom: 8px;                     /* Spazio sotto */
+    margin-top: 20px;                       /* Spazio sopra */
+    font-size: 1.1rem;                      /* Dimensione del font */
+}
+
+/* Stile base degli input */
+input[type="text"],
+input[type="number"],
+input[type="file"] {
+    width: 100%;                            /* Occupa tutta la larghezza disponibile */
+    padding: 10px 12px;                     /* Spaziatura interna */
+    border: 1.8px solid #ccc;               /* Bordo grigio chiaro */
+    border-radius: 5px;                     /* Angoli arrotondati */
+    font-size: 1rem;                        /* Font standard */
+    box-sizing: border-box;                 /* Include padding e border nel width */
+    transition: border-color 0.3s ease;     /* Transizione fluida sul bordo */
+}
+
+/* Stile degli input quando sono attivi (focus) */
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="file"]:focus {
+    outline: none;                          /* Nessuna outline predefinita */
+    border-color: #007bff;                 /* Bordo blu */
+    box-shadow: 0 0 5px rgba(0,123,255,0.4);/* Effetto glow */
+}
+
+/* Pulsante principale (es. invia o aggiungi) */
+button {
+    margin-top: 30px;
+    width: 100%;                            /* Occupa tutta la riga */
+    background-color: #007bff;              /* Blu */
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 12px 0;                        /* Altezza del bottone */
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.25s ease;
+}
+
+/* Effetto hover sul pulsante */
+button:hover {
+    background-color: #0056b3;              /* Blu più scuro */
+}
+
+/* Link (es. torni indietro) */
+a {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* Hover per i link */
+a:hover {
+    text-decoration: underline;
+}
+
+/* Contenitore per ogni autore */
+.autore {
+    display: flex;                          /* Input in riga */
+    gap: 10px;                              /* Spazio tra gli input */
+    margin-top: 10px;                       /* Spazio sopra ogni autore */
+}
+
+/* Input interni di ciascun autore */
+.autore input {
+    flex: 1;                                /* Crescita proporzionale */
+    min-width: 120px;                       /* Larghezza minima per campo */
+}
+
+/* Stile per il pulsante di rimozione autore */
+.rimuovi-autore-btn {
+    background-color: #dc3545;              /* Rosso */
+    border: none;
+    color: white;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    padding: 0 12px;
+    transition: background-color 0.25s ease;
+}
+
+/* Hover sul pulsante di rimozione */
+.rimuovi-autore-btn:hover {
+    background-color: #a71d2a;              /* Rosso più scuro */
+}

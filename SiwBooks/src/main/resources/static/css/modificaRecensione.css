@@ -1,0 +1,70 @@
+/* Imposta lo stile base per il body della pagina */
+body {
+    font-family: Arial, sans-serif; /* Font principale */
+    background-color: #f4f4f4;       /* Colore di sfondo chiaro */
+    margin: 40px;                    /* Spaziatura esterna */
+}
+
+/* Stile per il titolo principale */
+h1 {
+    text-align: center; /* Centra il testo */
+    color: #333;         /* Colore del testo scuro */
+}
+
+/* Contenitore del form */
+form {
+    max-width: 500px;                         /* Larghezza massima del form */
+    margin: 0 auto;                           /* Centra orizzontalmente */
+    background-color: #fff;                   /* Sfondo bianco */
+    padding: 25px 30px;                       /* Spaziatura interna */
+    border-radius: 8px;                       /* Angoli arrotondati */
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);     /* Ombra leggera */
+}
+
+/* Stile per etichette e contenitori */
+div, label {
+    margin-bottom: 15px;   /* Spazio sotto */
+    display: block;        /* Mostrati su nuova riga */
+    color: #333;           /* Colore del testo */
+}
+
+/* Stile per i campi di input e textarea */
+input[type="text"],
+input[type="number"],
+textarea {
+    width: 100%;              /* Larghezza completa */
+    padding: 8px;             /* Spaziatura interna */
+    border: 1px solid #ccc;   /* Bordo grigio chiaro */
+    border-radius: 4px;       /* Angoli arrotondati */
+    font-size: 14px;          /* Dimensione del testo */
+    box-sizing: border-box;   /* Include padding nel calcolo della larghezza */
+    font-family: Arial, sans-serif; /* Font coerente */
+}
+
+/* Specifica solo per la textarea */
+textarea {
+    resize: vertical;     /* Può essere ridimensionata solo verticalmente */
+    min-height: 100px;    /* Altezza minima */
+}
+
+/* Stile per i bottoni e link con classe cancel-button */
+button,
+a.cancel-button {
+    background-color: #007bff; /* Colore blu principale */
+    color: white;              /* Testo bianco */
+    padding: 10px 18px;        /* Spaziatura interna */
+    border: none;              /* Nessun bordo */
+    border-radius: 4px;        /* Angoli arrotondati */
+    cursor: pointer;           /* Cursore a mano al passaggio */
+    font-size: 16px;           /* Dimensione del testo */
+    text-decoration: none;     /* Nessuna sottolineatura */
+    display: inline-block;     /* Permette posizionamento affiancato */
+    margin-top: 10px;          /* Spazio sopra */
+    margin-right: 10px;        /* Spazio a destra */
+}
+
+/* Effetto hover per bottoni e link */
+button:hover,
+a.cancel-button:hover {
+    background-color: #0056b3; /* Colore più scuro al passaggio del mouse */
+}

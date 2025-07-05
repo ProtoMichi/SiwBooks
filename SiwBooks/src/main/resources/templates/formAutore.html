@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Aggiungi Autore</title>
+    
+    <!-- Collegamento al file CSS per lo stile del form -->
+    <link rel="stylesheet" th:href="@{/css/formLibro.css}" />
+</head>
+<body>
+
+    <!-- Titolo della pagina -->
+    <h1>Aggiungi un nuovo autore</h1>
+
+    <!-- Form per l'inserimento di un nuovo autore -->
+    <form th:action="@{/autori/aggiungi}" th:object="${autore}" method="POST" enctype="multipart/form-data">
+        
+        <!-- Protezione CSRF -->
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+        
+        <!-- Campo: Nome -->
+        <label for="nome">Nome:</label><br>
+        <input type="text" id="nome" th:field="*{nome}" required /><br><br>
+        
+        <!-- Campo: Cognome -->
+        <label for="cognome">Cognome:</label><br>
+        <input type="text" id="cognome" th:field="*{cognome}" required /><br><br>
+        
+        <!-- Campo: Data di nascita -->
+        <label for="dataDiNascita">Data di nascita:</label><br>
+        <input type="date" id="dataDiNascita" th:field="*{dataDiNascita}" required /><br><br>
+        
+        <!-- Campo: Data di morte (opzionale) -->
+        <label for="dataDiMorte">Data di morte:</label><br>
+        <input type="date" id="dataDiMorte" th:field="*{dataDiMorte}" /><br><br>
+        
+        <!-- Campo: Nazionalità -->
+        <label for="nazionalita">Nazionalità:</label><br>
+        <input type="text" id="nazionalita" th:field="*{nazionalita}" required /><br><br>
+        
+        <!-- Campo: Caricamento foto -->
+        <label for="fotografiaFile">Foto autore:</label><br>
+        <input type="file" id="fotografiaFile" name="fotografiaFile" accept="image/*" /><br><br>
+        
+        <!-- Pulsante di invio -->
+        <button type="submit">Aggiungi autore</button>
+    </form>
+    
+    <!-- Link per tornare alla lista autori -->
+    <br>
+    <a href="/autori">Torna alla lista autori</a>
+    
+</body>
+</html>
