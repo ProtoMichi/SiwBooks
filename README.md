@@ -69,10 +69,17 @@
 - Relazione many-to-one con libro
 - Relazione many-to-one con utente
 
-### Utente
+### User
+- Nome
+- Cognome
+- Email
+- Credenziali (Relazione one-to-many con Credentials)
+- Lista di recensioni (relazione one-to-many)
+
+### Credentials
 - Username
 - Ruolo (DEFAULT_ROLE, ADMIN)
-- Lista di recensioni (relazione one-to-many)
+- Utente (relazione one-to-one con User)
 
 ---
 
