@@ -47,9 +47,9 @@
 ### Libro
 - Titolo
 - Anno di pubblicazione
-- Lista di immagini
-- Lista di autori (relazione many-to-many)
-- Lista di recensioni (relazione one-to-many)
+- Lista di immagini (relazione one-to-many con ImmagineLibro)
+- Lista di autori (relazione many-to-many con Autore)
+- Lista di recensioni (relazione one-to-many con Recensione)
 
 ### ImmagineLibro
 - Dati Immagine (un array di byte che consente di memorizzare l'immagine nel database) 
